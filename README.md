@@ -1,7 +1,7 @@
 
 ![Capture](https://github.com/kaaneneskpc/CMPCurrencyApp/assets/32849662/7f5fe2bf-6f0a-4033-ab45-2d16c29f4cef)
 
-This is a Compose Multiplatform Currency project targeting Android, Desktop.
+## This is a Compose Multiplatform Currency project targeting Android, Desktop.
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
