@@ -8,7 +8,6 @@ import domain.CurrencyApiService
 import domain.MongoRepository
 import domain.PreferencesRepository
 import org.koin.core.context.startKoin
-import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 import presentation.screen.HomeViewModel
 
@@ -17,15 +16,17 @@ val appModule = module {
     single <MongoRepository> { MongoImpl() }
     single <PreferencesRepository> { PreferencesImpl(settings = get()) }
     single <CurrencyApiService> { CurrencyApiServiceImpl(preferences = get()) }
+    factory {
+        HomeViewModel(
+            preferences = get(),
+            mongoDb = get(),
+            api = get()
+        )
+    }
 }
-
-val viewModelModule = module {
-    factoryOf(::HomeViewModel)
-}
-
 
 fun initializeKoin() {
     startKoin {
-        modules(appModule, viewModelModule)
+        modules(appModule)
     }
 }
